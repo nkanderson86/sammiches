@@ -5,8 +5,5 @@ VALUES
 INSERT INTO sammiches
     (sammich_name)
 VALUES
-    ("Turkey Day");
-INSERT INTO sammiches
-    (sammich_name)
-VALUES
+    ("Turkey Day"),
     ("Meatball");
