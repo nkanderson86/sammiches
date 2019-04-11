@@ -4,3 +4,8 @@
 //    * `burger.js`
 
 // 4. Create the `router` for the app, and export the `router` at the end of your file.
+
+let express = require("express");
+let router = express.Router();
+
+let sammich = require("../models/sammich");
