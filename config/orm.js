@@ -5,7 +5,8 @@ let connection = require("./connection.js");
 let orm = {
     //   * `selectAll()`
     all: function (tableInput, cb) {
-        connection.query("SELECT * FROM ??", [tableInput], function (err, res) {
+        let queryString = "SELECT * FROM ??";
+        connection.query(queryString, [tableInput], function (err, res) {
             if (err) {
                 throw err;
             }
@@ -19,7 +20,7 @@ let orm = {
             if (err) {
                 throw err;
             }
-            cb(res);
+            console.log(res);
         });
     },
 
