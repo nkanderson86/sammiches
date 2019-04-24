@@ -9,18 +9,22 @@ router.get("/", function (req, res) {
 });
 
 router.get("/sammiches", function (req, res) {
-    sammich.selectAll(function (data) {
-        let hbObject = {
+    sammich.all(function (data) {
+        let hbsObject = {
             sammich: data
         };
-        res.render("index", hbObject);
+        console.log(hbsObject)
+        res.render("index", hbsObject);
     });
 });
 
 router.post("/api/sammiches", function (req, res) {
-    sammich.createSammich(req.body.sammich_name, function (data) {
-        res.send(data)
-    });
+    sammich.create([
+        "name", "devoured"
+    ], [req.body.name, false],
+        function (result) {
+            res.json({ id: result.insertId });
+        });
 });
 
 router.put("/api/sammiches/:id", function (req, res) {

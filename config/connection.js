@@ -18,7 +18,7 @@ connection.connect(function (err) {
         console.error("ERROR: " + err.stack);
         return;
     }
-    console.log("connected as " + connection.theadId);
+    console.log("connected as " + connection.threadId);
 });
 
 module.exports = connection;

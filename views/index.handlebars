@@ -13,13 +13,13 @@
         <input type="text" id="sam" name="name">
     </div>
 
-    <button type="submit">Add Sammich</button>
+    <button type="submit" id="sam-create">Add Sammich</button>
 </form>
 
 <h2>Ready to Eat!</h2>
 
 <ul>
-    {{#each sammiches}}
+    {{#each sammich}}
     {{#unless devoured}}
     {{sammich_name}}
     {{> sammiches/sammich-block devoured=false}}
@@ -29,11 +29,11 @@
 
 <h2>Sammiches from the past</h2>
 
-{{!-- <ul>
-    {{#each sammiches}}
+<ul>
+    {{#each sammich}}
     {{#if devoured}}
     {{sammich_name}}
     {{> sammiches/sammich-block devoured=true}}
-    {{/unless}}
+    {{/if}}
     {{/each}}
-</ul> --}}
+</ul>

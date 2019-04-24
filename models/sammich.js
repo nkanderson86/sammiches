@@ -3,23 +3,23 @@
 let orm = require("../config/orm");
 
 let sammich = {
-    selectAll: function (cb) {
+    all: function (cb) {
         orm.all("sammiches", function (res) {
             cb(res);
         });
     },
-    createSammich: function (name, cb) {
-        orm.create(name, function (res) {
+    create: function (cols, vals, cb) {
+        orm.create("sammiches", cols, vals, function (res) {
             cb(res);
         });
     },
-    eatSammich: function (id, cb) {
-        orm.update(id, function (res) {
+    eatSammich: function (objColVals, condition, cb) {
+        orm.update("sammiches", objColVals, condition, function (res) {
             cb(res);
         });
     },
-    deleteSammich: function (id, cb) {
-        orm.delete(id, function (res) {
+    delete: function (condition, cb) {
+        orm.delete("sammiches", condition, function (res) {
             cb(res);
         });
     }
