@@ -1,0 +1,10 @@
+{{!-- Change sammiches to devoured  --}}
+
+<li>
+    {{name}}
+    <button class="change-devour" data-id="{{id}}" data-new="{{devoured}}">
+        {{#if devoured}}ALREADY GONE!{{else}} EAT ME! {{/if}}
+    </button>
+
+    <button class="delete-sammich" data-id="{{this.id}}">DELETE!</button>
+</li>

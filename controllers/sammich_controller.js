@@ -34,7 +34,7 @@ router.put("/api/sammiches/:id", function (req, res) {
 });
 
 router.delete("/api/sammiches/:id", function (req, res) {
-    sammich.deleteSammich(req.params.id, function (data) {
+    sammich.delete(req.params.id, function (data) {
         res.send(data)
     });
 })
