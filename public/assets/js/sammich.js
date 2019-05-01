@@ -32,6 +32,20 @@ $(function () {
         )
     })
 
+    $(".change-devour").on("click", function () {
+        let id = $(this).data("id");
+        // alert("Click working " + id)
+        $.ajax("/api/sammiches/" + id, {
+            type: "PUT"
+        }).then(
+            function (res) {
+                console.log(res);
+                location.reload();
+            }
+        )
+
+    })
+
 
 
 })

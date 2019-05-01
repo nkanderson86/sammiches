@@ -20,7 +20,7 @@ router.get("/sammiches", function (req, res) {
 
 router.post("/api/sammiches", function (req, res) {
     sammich.create([
-        "name", "devoured"
+        "sammich_name", "devoured"
     ], [req.body.name, false],
         function (result) {
             res.json({ id: result.insertId });
@@ -28,13 +28,23 @@ router.post("/api/sammiches", function (req, res) {
 });
 
 router.put("/api/sammiches/:id", function (req, res) {
-    sammich.eatSammich(req.params.id, function (data) {
-        res.send(data)
+    let condition = "id = " + req.params.id;
+
+    sammich.eatSammich({ devoured: true }, condition, function (data) {
+
+        if (data.changedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 
 router.delete("/api/sammiches/:id", function (req, res) {
-    sammich.delete(req.params.id, function (data) {
+    let condition = "id = " + req.params.id;
+
+    sammich.delete(condition, function (data) {
         res.send(data)
     });
 })
