@@ -1,41 +1,56 @@
-{{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. 
+<nav>
+    <div class="nav-wrapper indigo darken-4">
+        <li class="brand-logo left"> Sammiches</li>
+    </div>
+</nav>
 
- * Create a button in `index.handlebars` that will submit the user input into the database.
---}}
-<div class="m-2">
-    <h1>Sammiches!</h1>
+<div class="container row">
+    <div class="row">
+        <div class="col offset-s1">
+            <h3>Add a Sammich</h3>
+            <h6>Whip up something delicious to devour!</h6>
+        </div>
+    </div>
+    <div class="row">
+        <form class="create-form col s3 offset-s1">
 
-    <h2>Add a Sammich</h2>
-</div>
+            <div class="form-group">
+                <label for="ca">Sammich Name:</label>
+                <input type="text" id="sam" name="name">
+            </div>
 
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="ca">Sammich Name:</label>
-        <input type="text" id="sam" name="name">
+            <button class="btn indigo darken-3" type="submit" id="sam-create">Add Sammich</button>
+        </form>
     </div>
 
-    <button type="submit" id="sam-create">Add Sammich</button>
-</form>
+    <div class="cat-pic">
+        <img src="/assets/img/catSammich.jpeg" alt="catSammy" style="float:right;">
+    </div>
 
-<h2>Ready to Eat!</h2>
+    <div class="row">
+        <div class="col offset-s1">
+            <h4>Ready to Eat!</h4>
+            <p>Fresh off the meat rack, ready to be devoured</p>
 
-<ul>
-    {{#each sammich}}
-    {{#unless devoured}}
-    {{sammich_name}}
-    {{> sammiches/sammich-block devoured=false}}
-    {{/unless}}
-    {{/each}}
-</ul>
+            <ul>
+                {{#each sammich}}
+                {{#unless devoured}}
+                {{sammich_name}}
+                {{> sammiches/sammich-block devoured=false}}
+                {{/unless}}
+                {{/each}}
+            </ul>
 
-<h2>Sammiches from the past</h2>
+            <h4>They Gon' </h4>
+            <p>Already devoured sammiches! Make another to have some mo'</p>
 
-<ul>
-    {{#each sammich}}
-    {{#if devoured}}
-    {{sammich_name}}
-    {{> sammiches/sammich-block devoured=true}}
-    {{/if}}
-    {{/each}}
-</ul>
+            <ul>
+                {{#each sammich}}
+                {{#if devoured}}
+                {{sammich_name}}
+                {{> sammiches/sammich-block devoured=true}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
